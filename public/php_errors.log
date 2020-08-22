@@ -1,0 +1,4 @@
+[16-Aug-2020 17:10:07 UTC] PHP Warning:  require(D:\work\Laravel\goals\public/../vendor/autoload.php): failed to open stream: No such file or directory in D:\work\Laravel\goals\public\index.php on line 24
+[16-Aug-2020 17:10:07 UTC] PHP Fatal error:  require(): Failed opening required 'D:\work\Laravel\goals\public/../vendor/autoload.php' (include_path='.;C:\php\pear') in D:\work\Laravel\goals\public\index.php on line 24
+[16-Aug-2020 17:12:02 UTC] PHP Warning:  require(D:\work\Laravel\goals\public/../vendor/autoload.php): failed to open stream: No such file or directory in D:\work\Laravel\goals\public\index.php on line 24
+[16-Aug-2020 17:12:02 UTC] PHP Fatal error:  require(): Failed opening required 'D:\work\Laravel\goals\public/../vendor/autoload.php' (include_path='.;C:\php\pear') in D:\work\Laravel\goals\public\index.php on line 24
