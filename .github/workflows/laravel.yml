@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Send signal
-      run: "curl --silent --show-error --fail -X POST https://goals1.uac.co.ua -H 'Authorization: ${{ secrets.DEPLOYMENT_TOKEN }}' -H 'Content-Type: application/json' -d '{\"tag\": \"${{ env.TAG }}\", \"ports\": {\"443\": 443}}'"
+      run: "curl --silent --show-error --fail -X POST https://goals.uca.co.ua -H 'Authorization: ${{ secrets.DEPLOYMENT_TOKEN }}' -H 'Content-Type: application/json' -d '{\"tag\": \"${{ env.TAG }}\", \"ports\": {\"443\": 443}}'"
