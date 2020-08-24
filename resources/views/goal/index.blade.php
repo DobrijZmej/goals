@@ -52,7 +52,7 @@ button .add-new {
                                 <td>{{ $goal->amount_target }}</td>
                                 <td style="text-align:right;">
                                     <a href="/goals/{{ $goal->id }}" class="btn btn-info btn-sm"><i class="material-icons">&#xE03B;</i></a>
-                                    <a href="/goals/{{ $goal->id }}/edit" class="btn btn-success btn-sm"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="{{ route('goals.edit', $goal) }}" class="btn btn-success btn-sm"><i class="material-icons">&#xE254;</i></a>
                                     <a href="{{ route('goals.destroy.link', $goal->id) }}" class="btn btn-danger btn-sm"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>

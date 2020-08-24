@@ -72,7 +72,7 @@ class GoalController extends Controller
      */
     public function edit(goal $goal)
     {
-        //
+        return view('goal.edit')->with('goal', $goal);
     }
 
     /**
@@ -84,7 +84,16 @@ class GoalController extends Controller
      */
     public function update(Request $request, goal $goal)
     {
-        //
+        $input = Request::all();
+        $goal->name = $input['name'];
+        $goal->description = $input['description'];
+        $goal->currency = $input['currency'];
+        $goal->amount_target = $input['amount_target'];
+        //dd($goal);
+        //goal::update($goal);
+        $goal->update();
+
+        return redirect('goals');
     }
 
     /**

@@ -25,5 +25,9 @@ return [
     'form_currency_hint' => 'UAH',
     'form_amount' => 'Сума',
     'form_amount_hint' => '10000',
+    'form_create' => 'Створити',
 
+
+    'Edit goal' => 'Редагування',
+    'form_update' => 'Зберегти',
 ];

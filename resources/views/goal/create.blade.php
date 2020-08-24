@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">{{ __('goals.form_create') }}</button>
 </form>
  </div>
  </div>
