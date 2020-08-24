@@ -9,9 +9,8 @@ return [
     |
     */
 
-    'Login'   => 'Увійти',
-    'Register' => 'Зареєструватися',
-    'Logout' => 'Вийти',
-    'menu_goals' => 'Мої цілі',
-
+    'list'   => 'Перелік цілей',
+    'name' => 'Назва',
+    'description' => 'Опис',
+    'target_amount' => 'Сума',
 ];

@@ -14,7 +14,8 @@ class GoalController extends Controller
      */
     public function index()
     {
-        //
+        $goals = Goal::orderBy('id', 'desc')->paginate(10);
+        return view('goal.index')->with('goals', $goals);
     }
 
     /**
