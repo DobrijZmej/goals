@@ -15,7 +15,7 @@ class CreateGoalsTable extends Migration
     {
         Schema::create('goals', function (Blueprint $table) {
             $table->id();
-            $table->number("user_id")->unsigned();
+            $table->bigInteger("user_id")->unsigned();
             $table->string("name", 100);
             $table->text("description");
             $table->string("currency", 10);
