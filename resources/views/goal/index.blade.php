@@ -19,6 +19,10 @@ button .add-new {
     border-radius: 50px;
     line-height: 13px;
 }
+.btn-sm {
+    padding: 0.10rem;
+    line-height: 1;
+}
 </style>
 <div class="container">
     <div class="row">
@@ -34,10 +38,10 @@ button .add-new {
                     <table class="table table-sm">
                         <thead>
                         <tr>
-                            <th>{{ __('goals.name') }}</th>
-                            <th>{{ __('goals.description') }}</th>
-                            <th>{{ __('goals.target_amount') }}</th>
-                            <th>{{ __('goals.action') }}</th>
+                            <th class="text-center">{{ __('goals.name') }}</th>
+                            <th class="text-center">{{ __('goals.description') }}</th>
+                            <th class="text-center">{{ __('goals.target_amount') }}</th>
+                            <th class="text-center">{{ __('goals.action') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,9 +51,9 @@ button .add-new {
                                 <td>{{ $goal->description }}</td>
                                 <td>{{ $goal->amount_target }}</td>
                                 <td style="text-align:right;">
-                                    <a href="/goal/{{ $goal->id }}" class="btn btn-info">View</a>
-                                    <a href="/goal/{{ $goal->id }}/edit" class="btn btn-success">Edit</a>
-                                    <a href="/goal/{{ $goal->id }}/destroy" class="btn btn-danger">Dellete</a>
+                                    <a href="/goals/{{ $goal->id }}" class="btn btn-info btn-sm"><i class="material-icons">&#xE03B;</i></a>
+                                    <a href="/goals/{{ $goal->id }}/edit" class="btn btn-success btn-sm"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="{{ route('goals.destroy.link', $goal->id) }}" class="btn btn-danger btn-sm"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         @endforeach

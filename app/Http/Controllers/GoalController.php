@@ -95,6 +95,9 @@ class GoalController extends Controller
      */
     public function destroy(goal $goal)
     {
-        //
+        //dd($goal);
+        $goal->delete();
+
+        return redirect(route('goals.index'));
     }
 }
