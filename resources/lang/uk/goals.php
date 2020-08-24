@@ -13,4 +13,5 @@ return [
     'name' => 'Назва',
     'description' => 'Опис',
     'target_amount' => 'Сума',
+    'add' => 'Створити',
 ];

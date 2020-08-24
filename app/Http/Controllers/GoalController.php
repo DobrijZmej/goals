@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\goal;
+use App\User;
 use Illuminate\Http\Request;
 
 class GoalController extends Controller
 {
+    public function __construct()
+{
+    $this->middleware('auth');
+}
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $goals = Goal::orderBy('id', 'desc')->paginate(10);
+        $user = auth()->user();
+        $goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
         return view('goal.index')->with('goals', $goals);
     }
 
