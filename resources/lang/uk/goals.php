@@ -14,4 +14,16 @@ return [
     'description' => 'Опис',
     'target_amount' => 'Сума',
     'add' => 'Створити',
+    'action' => 'Дія',
+    'Create new goal' => 'Створити нову ціль',
+    'form_name' => 'Назва',
+    'form_name_hint' => 'Збираю на квартиру/машину/будинок',
+    'form_name_description' => 'Будь-яка назва Вашої цілі',
+    'form_description' => 'Опис',
+    'form_description_hint' => 'Яскрава машина з червоними колесами',
+    'form_currency' => 'Валюта',
+    'form_currency_hint' => 'UAH',
+    'form_amount' => 'Сума',
+    'form_amount_hint' => '10000',
+
 ];

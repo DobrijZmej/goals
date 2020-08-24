@@ -37,18 +37,19 @@ button .add-new {
                             <th>{{ __('goals.name') }}</th>
                             <th>{{ __('goals.description') }}</th>
                             <th>{{ __('goals.target_amount') }}</th>
+                            <th>{{ __('goals.action') }}</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($goals as $goal)
                             <tr>
-                                <td>{{ $goal->id }}</td>
-                                <td>{{ $goal->title }}</td>
-                                <td>{{ $goal->type }}</td>
+                                <td>{{ $goal->name }}</td>
+                                <td>{{ $goal->description }}</td>
+                                <td>{{ $goal->amount_target }}</td>
                                 <td style="text-align:right;">
-                                    <a href="/node/{{ $goal->id }}" class="btn btn-info">View</a>
-                                    <a href="/node/{{ $goal->id }}/edit" class="btn btn-success">Edit</a>
-                                    <a href="/node/{{ $goal->id }}/destroy" class="btn btn-danger">Dellete</a>
+                                    <a href="/goal/{{ $goal->id }}" class="btn btn-info">View</a>
+                                    <a href="/goal/{{ $goal->id }}/edit" class="btn btn-success">Edit</a>
+                                    <a href="/goal/{{ $goal->id }}/destroy" class="btn btn-danger">Dellete</a>
                                 </td>
                             </tr>
                         @endforeach

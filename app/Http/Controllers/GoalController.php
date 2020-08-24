@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\goal;
 use App\User;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Request;
 
 class GoalController extends Controller
 {
@@ -32,7 +33,7 @@ class GoalController extends Controller
      */
     public function create()
     {
-        //
+        return view('goal.create');
     }
 
     /**
@@ -43,7 +44,13 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Request::all();
+        $input = array_merge($input, ['user_id' => auth()->user()->id]);
+        //dd($input);
+        //$input->user_id = auth()->user()->id;
+        goal::create($input);
+
+        return redirect('goals');
     }
 
     /**
