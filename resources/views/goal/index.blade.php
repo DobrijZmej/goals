@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{{ __('goals.list') }}<a href="/node/create" class="btn btn-success"> + Create</a></div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-sm">
                         <thead>
                         <tr>
                             <th>{{ __('goals.name') }}</th>
