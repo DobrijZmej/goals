@@ -61,7 +61,9 @@ class GoalController extends Controller
      */
     public function show(goal $goal)
     {
-        //
+        //dd($goal);
+        $goal->read_only = "readonly";
+        return view('goal.edit')->with('goal', $goal);
     }
 
     /**

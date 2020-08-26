@@ -30,4 +30,10 @@ return [
 
     'Edit goal' => 'Редагування',
     'form_update' => 'Зберегти',
+    'form_back' => 'Повернутися',
+
+    'hint_view' => 'Переглянути',
+    'hint_edit' => 'Редагувати',
+    'hint_delete' => 'Видалити',
+
 ];

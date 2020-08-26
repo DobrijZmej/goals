@@ -51,9 +51,9 @@ button .add-new {
                                 <td>{{ $goal->description }}</td>
                                 <td>{{ $goal->amount_target }}</td>
                                 <td style="text-align:right;">
-                                    <a href="/goals/{{ $goal->id }}" class="btn btn-info btn-sm"><i class="material-icons">&#xE03B;</i></a>
-                                    <a href="{{ route('goals.edit', $goal) }}" class="btn btn-success btn-sm"><i class="material-icons">&#xE254;</i></a>
-                                    <a href="{{ route('goals.destroy.link', $goal->id) }}" class="btn btn-danger btn-sm"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="/goals/{{ $goal->id }}" class="btn btn-info btn-sm" title="{{ __("goals.hint_view") }}"><i class="material-icons">&#xE03B;</i></a>
+                                    <a href="{{ route('goals.edit', $goal) }}" class="btn btn-success btn-sm" title="{{ __("goals.hint_edit") }}"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="{{ route('goals.destroy.link', $goal->id) }}" class="btn btn-danger btn-sm" title="{{ __("goals.hint_delete") }}"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         @endforeach
