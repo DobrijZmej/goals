@@ -22,7 +22,7 @@ class MovesController extends Controller
         //$goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
         //$data = ["goals"=>$goals, "moves"=>$moves];
         //dd($moves);
-        return view('moves.index')->with('moves', $moves);
+        return view('Moves.index')->with('moves', $moves);
     }
 
     /**
@@ -34,7 +34,7 @@ class MovesController extends Controller
     {
         $user = auth()->user();
         $goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
-        return view('moves.create')->with('goals', $goals);
+        return view('Moves.create')->with('goals', $goals);
     }
 
     /**
