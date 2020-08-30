@@ -91,7 +91,7 @@ class GoalController extends Controller
         $goal->description = $input['description'];
         $goal->currency = $input['currency'];
         $goal->amount_target = $input['amount_target'];
-        //dd($goal);
+        dd($goal);
         //goal::update($goal);
         $goal->update();
 

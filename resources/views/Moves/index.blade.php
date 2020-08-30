@@ -51,7 +51,7 @@ button .add-new {
                                 <td>{{ $move->amount }}</td>
                                 <td>{{ $move->description }}</td>
                                 <td style="text-align:right;">
-                                    <a href="/moves/{{ $move->id }}" class="btn btn-info btn-sm" title="{{ __("moves.hint_view") }}"><i class="material-icons">&#xE03B;</i></a>
+                                    <a href="{{ route('moves.show', $move) }}" class="btn btn-info btn-sm" title="{{ __("moves.hint_view") }}"><i class="material-icons">&#xE03B;</i></a>
                                     <a href="{{ route('moves.edit', $move) }}" class="btn btn-success btn-sm" title="{{ __("moves.hint_edit") }}"><i class="material-icons">&#xE254;</i></a>
                                     <a href="{{ route('moves.destroy.link', $move->id) }}" class="btn btn-danger btn-sm" title="{{ __("moves.hint_delete") }}"><i class="material-icons">&#xE872;</i></a>
                                 </td>

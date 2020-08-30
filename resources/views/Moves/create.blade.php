@@ -14,7 +14,7 @@
 <div class="input-group mb-3"><div class="input-group-prepend">
     <label class="input-group-text" for="goalsList">{{ __('moves.form_goals_list') }}</label>
   </div>
-  <select class="custom-select" id="goalsList" name="goal_id">
+  <select class="custom-select" id="goalsList" name="goal_id" autofocus>
     <option selected>{{ __('moves.form_goals_list_select') }}</option>
     @foreach($goals as $goal)
        <option value="{{ $goal->id }}">{{ $goal->name }}</option>

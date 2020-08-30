@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Moves;
+use App\Move;
 use App\goal;
 //use Illuminate\Http\Request;
 use Request;
@@ -17,11 +17,7 @@ class MovesController extends Controller
     public function index()
     {
         $user = auth()->user();
-        //dd($user->moves()->get());
-        $moves = $user->moves()->orderBy('id', 'desc')->paginate(10);
-        //$goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
-        //$data = ["goals"=>$goals, "moves"=>$moves];
-        //dd($moves);
+        $moves = $user->moves()->orderBy('date', 'desc')->paginate(10);
         return view('Moves.index')->with('moves', $moves);
     }
 
@@ -33,7 +29,7 @@ class MovesController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
+        $goals = $user->goals()->orderBy('name', 'desc')->paginate(10);
         return view('Moves.create')->with('goals', $goals);
     }
 
@@ -46,10 +42,7 @@ class MovesController extends Controller
     public function store(Request $request)
     {
         $input = Request::all();
-        //$input = array_merge($input, ['user_id' => auth()->user()->id]);
-        //dd($input);
-        //$input->user_id = auth()->user()->id;
-        moves::create($input);
+        Move::create($input);
 
         return redirect('moves');
     }
@@ -60,9 +53,12 @@ class MovesController extends Controller
      * @param  \App\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function show(Moves $moves)
+    public function show(Move $move)
     {
-        //
+        $user = auth()->user();
+        $goals = $user->goals()->orderBy('id', 'desc')->get();
+        $move->read_only = "readonly";
+        return view('Moves.edit')->with('goals', $goals)->with('move', $move);
     }
 
     /**
@@ -71,9 +67,11 @@ class MovesController extends Controller
      * @param  \App\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function edit(Moves $moves)
+    public function edit(Move $move)
     {
-        //
+        $user = auth()->user();
+        $goals = $user->goals()->orderBy('id', 'desc')->get();
+        return view('Moves.edit')->with('goals', $goals)->with('move', $move);
     }
 
     /**
@@ -83,9 +81,16 @@ class MovesController extends Controller
      * @param  \App\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Moves $moves)
+    public function update(Request $request, Move $move)
     {
-        //
+        $input = Request::all();
+        $move->goal_id = $input['goal_id'];
+        $move->date = $input['date'];
+        $move->description = $input['description'];
+        $move->amount = $input['amount'];
+        $move->update();
+
+        return redirect('moves');
     }
 
     /**
@@ -94,8 +99,11 @@ class MovesController extends Controller
      * @param  \App\Moves  $moves
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Moves $moves)
+    public function destroy(Move $move)
     {
-        //
+        //dd($goal);
+        $move->delete();
+
+        return redirect(route('moves.index'));
     }
 }
