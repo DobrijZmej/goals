@@ -13,4 +13,10 @@ class goal extends Model
         'currency',
         'amount_target',
       ];
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+    public function moves() {
+        return $this->hasMany('App\Moves');
+    }
 }

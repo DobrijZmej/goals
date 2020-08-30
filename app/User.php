@@ -40,4 +40,10 @@ class User extends Authenticatable
     public function goals() {
         return $this->hasMany('App\goal');
     }
+
+    public function moves() {
+        return $this->hasMany('App\goal')->join('moves', 'moves.goal_id', '=', 'goals.id')->select('moves.*');
+        //return $this->hasManyThrough('App\Moves', 'App\goal', 'id', 'goal_id', 'id');
+    }
+
 }
