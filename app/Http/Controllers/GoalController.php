@@ -36,6 +36,18 @@ class GoalController extends Controller
         return view('goal.create');
     }
 
+    public function createValidate(Request $request)
+    {
+        $input = Request::all();
+        $validate = (object)["checked"=>true, "error"=>""];
+        $result = (object)["name"=>clone($validate), "description"=>clone($validate), "currency"=>clone($validate), "amount_target"=>clone($validate)];
+        if($input["name"] == "") {
+            $result->name->checked=false;
+            $result->name->error=__('goals.errorNameEmpty');
+        }
+        return response()->json($result);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

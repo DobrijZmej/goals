@@ -22,5 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('goals', 'GoalController');
 Route::get('goals/{goal}/destroy', 'GoalController@destroy')->name('goals.destroy.link')->middleware('auth');
+Route::post('goals/createValidate', 'GoalController@createValidate')->name('goals.create.validate')->middleware('auth');
 Route::resource('moves', 'MovesController');
 Route::get('moves/{move}/destroy', 'MovesController@destroy')->name('moves.destroy.link')->middleware('auth');
