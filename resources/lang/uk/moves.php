@@ -18,7 +18,7 @@ return [
     'action' => 'Дія',
 
     'Create new goal' => 'Додати рух',
-    'Create new goal' => 'Додати рух',
+    'edit_move' => 'Редагувати рух',
 
     'form_goals_list' => 'Ціль:',
     'form_goals_list_select' => 'Оберіть...',

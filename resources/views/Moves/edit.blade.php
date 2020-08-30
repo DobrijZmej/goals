@@ -5,7 +5,7 @@
     <div class="row">
 
 <div class='col-md-6 col-md-offset-3'>
-  <h1>{{ __('moves.Create new goal') }}</h1>
+  <h1>{{ __('moves.edit_move') }}</h1>
 <hr>
 
 <form action="
