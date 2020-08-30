@@ -13,5 +13,6 @@ return [
     'Register' => 'Зареєструватися',
     'Logout' => 'Вийти',
     'menu_goals' => 'Мої цілі',
+    'menu_moves' => 'Рух коштів',
 
 ];
