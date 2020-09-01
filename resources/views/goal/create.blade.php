@@ -56,28 +56,33 @@ function validate(){
     $.map(formData, function(n, i){
         jsonData[n['name']] = n['value'];
     });
-    $.post("{{ route('goals.create.validate') }}", jsonData).done(function(restData){
-        if(restData.name.checked){
-            $('#goalNameError').animate({opacity:0}, 1);
-        } else {
-            $('#goalNameError').html(restData.name.error);
-            $('#goalNameError').animate({opacity:1}, 1);
+    $.ajax({
+        url:"{{ route('goals.create.validate') }}",
+        type:"POST",
+        data: jsonData,
+        async:false,
+        success: function(restData){
+            if(restData.name.checked){
+                $('#goalNameError').animate({opacity:0}, 1);
+            } else {
+                $('#goalNameError').html(restData.name.error);
+                $('#goalNameError').css('opacity', 1);
+            }
+            if(restData.description.checked){
+                $('#goalDescriptionError').animate({opacity:0}, 1);
+            } else {
+                $('#goalDescriptionError').html(restData.name.error);
+                $('#goalDescriptionError').animate({opacity:1}, 1);
+            }
+            $("#f button").prop('disabled', false);
+            $("#submitLoading").fadeTo("slow", 0);
         }
-        if(restData.description.checked){
-            $('#goalDescriptionError').animate({opacity:0}, 1);
-        } else {
-            $('#goalDescriptionError').html(restData.name.error);
-            $('#goalDescriptionError').animate({opacity:1}, 1);
-        }
-        console.log(restData.name);
-        $("#f button").prop('disabled', false);
-        $("#submitLoading").fadeTo("slow", 0);
     });
 }
 $("#f").submit(function(){
-    console.log('onSubmit');
+    //console.log('onSubmit');
     validate();
-    if($("small[style*='opacity:1']").length > 0){
+    if($("small").filter( function() {return $(this).css('opacity') === '1';}).length > 0){
         return false;
     }
     return true;
