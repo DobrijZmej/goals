@@ -13,15 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('goals', 'GoalController');
 Route::get('goals/{goal}/destroy', 'GoalController@destroy')->name('goals.destroy.link')->middleware('auth');
 Route::post('goals/createValidate', 'GoalController@createValidate')->name('goals.create.validate')->middleware('auth');
 Route::resource('moves', 'MovesController');
 Route::get('moves/{move}/destroy', 'MovesController@destroy')->name('moves.destroy.link')->middleware('auth');
+
+Route::get('api/charts/lines', 'ApiController@getChartLines')->name('charts.lines')->middleware('auth');

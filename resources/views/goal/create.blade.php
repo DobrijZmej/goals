@@ -81,6 +81,7 @@ function validate(){
 }
 $("#f").submit(function(){
     //console.log('onSubmit');
+    $("#f button").prop('disabled', true);
     validate();
     if($("small").filter( function() {return $(this).css('opacity') === '1';}).length > 0){
         return false;

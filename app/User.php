@@ -46,4 +46,9 @@ class User extends Authenticatable
         //return $this->hasManyThrough('App\Moves', 'App\goal', 'id', 'goal_id', 'id');
     }
 
+    public function chartLines() {
+        return $this->hasMany('App\goal')->join('moves', 'moves.goal_id', '=', 'goals.id')->select('goals.id', 'goals.name', 'moves.date', 'moves.amount');
+        //return $this->hasManyThrough('App\Moves', 'App\goal', 'id', 'goal_id', 'id');
+    }
+
 }
