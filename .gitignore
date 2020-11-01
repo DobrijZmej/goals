@@ -13,3 +13,4 @@ yarn-error.log
 public/on_push_signal.php
 jobs/php_errors.log
 jobs/update_rates.php
+jobs/*.*
