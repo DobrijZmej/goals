@@ -25,7 +25,12 @@
 
   <div class="form-group">
     <label for="goalCurency">{{ __('goals.form_currency') }}</label>
-    <input type="text" class="form-control" id="goalCurency" name="currency" placeholder="{{ __('goals.form_currency_hint') }}">
+    <!--input type="text" class="form-control" id="goalCurency" name="currency" placeholder="{{ __('goals.form_currency_hint') }}" -->
+    <select class="form-control" id="goalCurency" name="currency">
+        @foreach ($currencies as $currency)
+            <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+        @endforeach
+    </select>
   </div>
 
   <div class="form-group">

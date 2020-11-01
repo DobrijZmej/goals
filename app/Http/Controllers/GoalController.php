@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\goal;
 use App\User;
+use App\Currency;
 //use Illuminate\Http\Request;
 use Request;
 
@@ -33,7 +34,11 @@ class GoalController extends Controller
      */
     public function create()
     {
-        return view('goal.create');
+        $currency = new Currency();
+        //dd($currency->getActive());
+        $curr = $currency->getActive();
+        //->getActive();
+        return view('goal.create')->with('currencies', $curr);
     }
 
     public function createValidate(Request $request)
@@ -75,7 +80,9 @@ class GoalController extends Controller
     {
         //dd($goal);
         $goal->read_only = "readonly";
-        return view('goal.edit')->with('goal', $goal);
+        $currency = new Currency();
+        $curr = $currency->getActive();
+        return view('goal.edit', ['goal' => $goal, 'currencies' => $curr]);//->with('goal', $goal)->with('currencies', $curr);
     }
 
     /**
@@ -86,7 +93,10 @@ class GoalController extends Controller
      */
     public function edit(goal $goal)
     {
-        return view('goal.edit')->with('goal', $goal);
+        $currency = new Currency();
+        $curr = $currency->getActive();
+        return view('goal.edit', ['goal' => $goal, 'currencies' => $curr]);//->with('goal', $goal)->with('currencies', $curr);
+        //return view('goal.edit')->with('goal', $goal);
     }
 
     /**

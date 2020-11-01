@@ -36,7 +36,26 @@
 
   <div class="form-group">
     <label for="goalCurency">{{ __('goals.form_currency') }}</label>
-    <input type="text" class="form-control" id="goalCurency" name="currency" placeholder="{{ __('goals.form_currency_hint') }}" value="{{ $goal->currency }}" {{ $goal->read_only }}>
+    <!--input type="text" class="form-control" id="goalCurency" name="currency" placeholder="{{ __('goals.form_currency_hint') }}" value="{{ $goal->currency }}" {{ $goal->read_only }}-->
+    {{ $goal->read_only }}
+    @if($goal->read_only != 'readonly')
+        <select class="form-control" id="goalCurency" name="currency">
+        @foreach ($currencies as $currency)
+                <option value="{{ $currency->id }}"
+                    @if($currency->id == $goal->currency)
+                    selected
+                    @endif
+                    >{{ $currency->name }}</option>
+        @endforeach
+        </select>
+    @else
+        @foreach ($currencies as $currency)
+            @if($currency->id == $goal->currency)
+                <input type="text" class="form-control" id="goalCurency" name="currency" placeholder="{{ __('goals.form_currency_hint') }}" value="{{ $currency->name }}" {{ $goal->read_only }}>
+            @endif
+        @endforeach
+    @endif
+
   </div>
 
   <div class="form-group">
