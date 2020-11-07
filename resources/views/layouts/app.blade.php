@@ -21,6 +21,7 @@
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/bootstrap_Solar.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
 </head>
 <body>
     <div id="app">

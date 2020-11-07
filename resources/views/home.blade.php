@@ -40,13 +40,27 @@
                             columns = restData.goals;
                         }
                     });
-                    console.log(rows);
-                    rows = rows.map(row=>[new Date(row[0]), Number.parseInt(row[1])]);
-                    console.log(columns[0].name);
+                    //console.log(rows);
+                    rows.forEach(function(row, i){
+                        row.forEach(function(data, j){
+                            if(j==0){
+                                data = moment(row[0], 'DD.MM.YYYY hh:mm:ss').toDate();
+                                rows[i][0] = data;
+                                console.log(data);
+                            } else {
+                                data = Number.parseInt(data);
+                                rows[i][j] = data;
+                            }
+                        });
+                    }
+                    );
+                    //console.log(rows);
+                    //console.log(columns[0].name);
 
                     data.addColumn('date', 'X');
-                    data.addColumn('number', columns[0].name);
-                    //data.addColumn('number', 'Cats');
+                    columns.forEach(function(row, i){
+                        data.addColumn('number', row);
+                    });
                     data.addRows(rows);
 
                     var options = {
@@ -59,14 +73,11 @@
                             textStyle:{color:'white'},
                         },
                         vAxis: {
-                            /*title: 'Popularity',*/
                             textStyle:{color:'white'},
                             titleTextStyle:{color:'white'},
-                            /*viewWindowMode:'explicit',*/
                         },
                         backgroundColor: '#002b36',
                         curveType: 'function',
-                        /*chartArea: {width: '70%'},*/
                     };
 
                     chart.draw(data, options);
