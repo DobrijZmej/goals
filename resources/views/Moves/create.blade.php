@@ -30,7 +30,7 @@
 
 <div class="input-group mb-3"><div class="input-group-prepend">
     <span class="input-group-text">{{ __('moves.form_amount') }}</span></div>
-    <input type="number" class="form-control" id="moveAmount" name="amount" step="any" min="0" placeholder="{{ __('moves.form_amount') }}">
+    <input type="number" class="form-control" id="moveAmount" name="amount" step="any" min="-999999999" placeholder="{{ __('moves.form_amount') }}">
 </div>
 
 <div class="input-group mb-3"><div class="input-group-prepend">
