@@ -24,7 +24,8 @@ class ApiController extends Controller
 
         $q_dates = DB::select(DB::raw('
         select  DATE_FORMAT(MIN(m.date)-INTERVAL 1 DAY,"%d.%m.%Y %H:%i:%S") min_date,
-                DATE_FORMAT(MAX(m.date)+INTERVAL 1 DAY,"%d.%m.%Y %H:%i:%S") max_date
+                DATE_FORMAT(NOW(),"%d.%m.%Y %H:%i:%S") max_date
+                /*DATE_FORMAT(MAX(m.date)+INTERVAL 1 DAY,"%d.%m.%Y %H:%i:%S") max_date*/
         from    goals g
                 inner join moves m on m.goal_id=g.id
         where   user_id=:user_id
