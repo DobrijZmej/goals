@@ -66,7 +66,9 @@ class ApiController extends Controller
         foreach($goals_list as $goal){
             $goals_names[] = $goal->name;
         }
-        $goals_names[] = "Усього";
+        if(count($goals_names) > 1) {
+            $goals_names[] = "Усього";
+        }
         $goals = [];
            // цикл по нашим датам
         foreach($dates as $date){
@@ -86,7 +88,9 @@ class ApiController extends Controller
                     $total_amount = $total_amount + floatval($g_row->amount); // плюс запоминаем общие накопления
                 }
             }
-            $row[] = $total_amount; // добавляем общие накопления
+            if(count($goals_names) > 1) {
+                $row[] = $total_amount; // добавляем общие накопления
+            }
             $goals[]=$row;
         }
         $result = (object)[];

@@ -13,6 +13,7 @@ return [
     'name' => 'Назва',
     'description' => 'Опис',
     'target_amount' => 'Сума',
+    'current_amount' => 'Вже зібрано',
     'add' => 'Створити',
     'action' => 'Дія',
     'Create new goal' => 'Створити нову ціль',

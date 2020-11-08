@@ -40,7 +40,9 @@ button .add-new {
                         <tr>
                             <th class="text-center">{{ __('goals.name') }}</th>
                             <th class="text-center">{{ __('goals.description') }}</th>
+                            <th class="text-center">{{ __('goals.currency') }}</th>
                             <th class="text-center">{{ __('goals.target_amount') }}</th>
+                            <th class="text-center">{{ __('goals.current_amount') }}</th>
                             <th class="text-center">{{ __('goals.action') }}</th>
                         </tr>
                         </thead>
@@ -49,10 +51,12 @@ button .add-new {
                             <tr>
                                 <td>{{ $goal->name }}</td>
                                 <td>{{ $goal->description }}</td>
-                                <td>{{ $goal->amount_target }}</td>
+                                <td>{{ $goal->currency }}</td>
+                                <td style="text-align:right">{{ number_format($goal->amount_target, 2, '.', ' ') }}</td>
+                                <td style="text-align:right">{{ number_format($goal->current_amount, 2, '.', ' ') }}</td>
                                 <td style="text-align:right;">
                                     <a href="/goals/{{ $goal->id }}" class="btn btn-info btn-sm" title="{{ __("goals.hint_view") }}"><i class="material-icons">&#xE03B;</i></a>
-                                    <a href="{{ route('goals.edit', $goal) }}" class="btn btn-success btn-sm" title="{{ __("goals.hint_edit") }}"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="{{ route('goals.edit', $goal->id) }}" class="btn btn-success btn-sm" title="{{ __("goals.hint_edit") }}"><i class="material-icons">&#xE254;</i></a>
                                     <a href="{{ route('goals.destroy.link', $goal->id) }}" class="btn btn-danger btn-sm" title="{{ __("goals.hint_delete") }}"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>

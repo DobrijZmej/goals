@@ -39,4 +39,18 @@ class goal extends Model
         where user_id=:user_id'), ['user_id'=>1]);
         return $goals;
     }
+
+    public function goalList($inUser){
+        $goals = DB::select(DB::raw('select g.id,
+        g.name,
+        curr.name currency,
+        g.amount_target,
+        g.description,
+        ifnull((select sum(amount) from moves m where m.goal_id=g.id), 0) current_amount
+        from goals g
+             left join currency curr on curr.id=g.currency
+        where g.user_id=:user_id
+        order by 1'), ['user_id'=>$inUser]);
+        return $goals;
+    }
 }

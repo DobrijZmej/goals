@@ -99,9 +99,11 @@
                             height: '94%'
                         },*/
                         backgroundColor: '#002b36',
-                        curveType: 'function',
+                        /*curveType: 'function',*/
                         width: '100%',
                         height: '100%',
+                        /*vAxis: {gridlines: {interval: 1}
+                        }*/
                     };
 
                     chart.draw(data, options);

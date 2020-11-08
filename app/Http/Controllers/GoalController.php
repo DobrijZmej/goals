@@ -23,7 +23,9 @@ class GoalController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
+        //$goals = $user->goals()->orderBy('id', 'desc')->paginate(10);
+        $goals = new goal();
+        $goals = $goals->goalList($user->id);
         return view('goal.index')->with('goals', $goals);
     }
 

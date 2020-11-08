@@ -15,6 +15,7 @@ return [
     'date' => 'Дата',
     'amount' => 'Сума',
     'description' => 'Опис',
+    'goalName' => 'Ціль',
     'action' => 'Дія',
 
     'Create new goal' => 'Додати рух',

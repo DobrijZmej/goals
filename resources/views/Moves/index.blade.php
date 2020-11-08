@@ -41,6 +41,7 @@ button .add-new {
                             <th class="text-center">{{ __('moves.date') }}</th>
                             <th class="text-center">{{ __('moves.amount') }}</th>
                             <th class="text-center">{{ __('moves.description') }}</th>
+                            <th class="text-center">{{ __('moves.goalName') }}</th>
                             <th class="text-center">{{ __('moves.action') }}</th>
                         </tr>
                         </thead>
@@ -48,11 +49,12 @@ button .add-new {
                         @foreach($moves as $move)
                             <tr>
                                 <td>{{ date("d.m.Y", strtotime($move->date)) }}</td>
-                                <td>{{ $move->amount }}</td>
+                                <td style="text-align:right"></td>{{ number_format($move->amount, 2, '.', ' ') }}</td>
                                 <td>{{ $move->description }}</td>
+                                <td>{{ $move->goal_name }}</td>
                                 <td style="text-align:right;">
-                                    <a href="{{ route('moves.show', $move) }}" class="btn btn-info btn-sm" title="{{ __("moves.hint_view") }}"><i class="material-icons">&#xE03B;</i></a>
-                                    <a href="{{ route('moves.edit', $move) }}" class="btn btn-success btn-sm" title="{{ __("moves.hint_edit") }}"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="{{ route('moves.show', $move->id) }}" class="btn btn-info btn-sm" title="{{ __("moves.hint_view") }}"><i class="material-icons">&#xE03B;</i></a>
+                                    <a href="{{ route('moves.edit', $move->id) }}" class="btn btn-success btn-sm" title="{{ __("moves.hint_edit") }}"><i class="material-icons">&#xE254;</i></a>
                                     <a href="{{ route('moves.destroy.link', $move->id) }}" class="btn btn-danger btn-sm" title="{{ __("moves.hint_delete") }}"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>

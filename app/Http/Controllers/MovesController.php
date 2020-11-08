@@ -17,7 +17,10 @@ class MovesController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $moves = $user->moves()->orderBy('date', 'desc')->paginate(10);
+        //$moves = $user->moves()->orderBy('date', 'desc')->paginate(10);
+        //return view('Moves.index')->with('moves', $moves);
+        $moves = new Move();
+        $moves = $moves->moveList($user->id);
         return view('Moves.index')->with('moves', $moves);
     }
 
