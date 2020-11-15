@@ -49,7 +49,7 @@ button .add-new {
                         @foreach($moves as $move)
                             <tr>
                                 <td>{{ date("d.m.Y", strtotime($move->date)) }}</td>
-                                <td style="text-align:right"></td>{{ number_format($move->amount, 2, '.', ' ') }}</td>
+                                <td style="text-align:right">{{ number_format($move->amount, 2, '.', ' ') }}</td>
                                 <td>{{ $move->description }}</td>
                                 <td>{{ $move->goal_name }}</td>
                                 <td style="text-align:right;">
