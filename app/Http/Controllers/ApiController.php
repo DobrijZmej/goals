@@ -17,42 +17,25 @@ class ApiController extends Controller
     public function getChartLines()
     {
         $user = auth()->user();
-        //$goals = $user->goals()->orderBy('id', 'desc')->get();
-        //$goals = $user->chartLines()->orderBy('id', 'desc')->get();
 
-        /*Сначала определим диапазон - минимальную и максимальную даты по пользователю*/
-
+           // выберем даты, когда были движения
         $q_dates = DB::select(DB::raw('
-        select  DATE_FORMAT(MIN(m.date)-INTERVAL 1 DAY,"%d.%m.%Y %H:%i:%S") min_date,
-                DATE_FORMAT(NOW(),"%d.%m.%Y %H:%i:%S") max_date
-                /*DATE_FORMAT(MAX(m.date)+INTERVAL 1 DAY,"%d.%m.%Y %H:%i:%S") max_date*/
+        select DATE_FORMAT(r.move_date,"%d.%m.%Y %H:%i:%S") move_date from (
+        SELECT  m.date move_date
         from    goals g
                 inner join moves m on m.goal_id=g.id
         where   user_id=:user_id
+		GROUP BY m.date
+		UNION
+        SELECT   NOW()
+		ORDER BY move_date
+        ) r
         '), ['user_id'=>$user->id]);
 
-        foreach($q_dates as $row){
-            $min_date = date_create_from_format("d.m.Y H:i:s", $row->min_date);
-            $max_date = date_create_from_format("d.m.Y H:i:s", $row->max_date);
-        }
-           // посчитаем разницу между датами
-        $date_diff = $max_date->getTimestamp() - $min_date->getTimestamp();
-           // и поделим на 10 отрезков
-        $interval = $date_diff/10;
         $dates = [];
-        $curr_date = $min_date->getTimestamp();
-        for ($i=0; $i <= 10; $i++) {
-            $dates[] = date("d.m.Y H:i:s", $curr_date);
-            $curr_date = $curr_date + $interval;
+        foreach($q_dates as $row){
+            $dates[] = $row->move_date;//date_create_from_format("d.m.Y H:i:s", $row->move_date);
         }
-
-           // теперь есть 11 точек на графике, нужно под каждую заполить остатки на целях
-        //dd($dates);
-
-        /*$result = (object)[];
-        $result->min_date = $min_date;
-        $result->max_date = $max_date;
-        $result->date_diff = $date_diff;*/
 
            // выберем перечень целей
         $goals_list = DB::select(DB::raw('
@@ -70,6 +53,7 @@ class ApiController extends Controller
         if(count($goals_names) > 1) {
             $goals_names[] = "Усього";
         }
+
         $goals = [];
            // цикл по нашим датам
         foreach($dates as $date){
@@ -79,7 +63,7 @@ class ApiController extends Controller
                // цикл по выбранным ранее целям
             foreach($goals_list as $goal){
                 $goal_data = DB::select(DB::raw('
-                select  ifnull((select sum(amount) from moves m where m.goal_id=goals.id and m.date <= STR_TO_DATE (:date, "%d.%m.%Y %H:%i:%S")), 0) amount
+            select  ifnull((select sum(amount) from moves m where m.goal_id=goals.id and m.date <= STR_TO_DATE(:date, "%d.%m.%Y %H:%i:%S")), 0) amount
                 from    goals
                 where   goals.id=:goal_id
                 '), ['goal_id'=>$goal->id, 'date'=>$date]);

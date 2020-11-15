@@ -58,13 +58,14 @@
                             columns = restData.goals;
                         }
                     });
-                    //console.log(rows);
+                    console.log(rows);
                     rows.forEach(function(row, i){
                         row.forEach(function(data, j){
                             if(j==0){
+                                console.log(row[0]);
                                 data = moment(row[0], 'DD.MM.YYYY hh:mm:ss').toDate();
                                 rows[i][0] = data;
-                                //console.log(data);
+                                console.log(data);
                             } else {
                                 data = Number.parseInt(data);
                                 rows[i][j] = data;
