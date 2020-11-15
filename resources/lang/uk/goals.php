@@ -12,6 +12,7 @@ return [
     'list'   => 'Перелік цілей',
     'name' => 'Назва',
     'description' => 'Опис',
+    'currency' => 'Валюта',
     'target_amount' => 'Сума',
     'current_amount' => 'Вже зібрано',
     'add' => 'Створити',
